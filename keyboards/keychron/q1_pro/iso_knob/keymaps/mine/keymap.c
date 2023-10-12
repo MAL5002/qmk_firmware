@@ -66,3 +66,20 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [WIN_FN] = {ENCODER_CCW_CW(KC_VOLD, KC_VOLU)}
 };
 #endif // ENCODER_MAP_ENABLE
+
+extern uint8_t is_orgb_mode;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+    switch (keycode) {
+        case SWITCH_MODE:
+        #ifdef OPENRGB_ENABLE
+            if (record->event.pressed) {                
+                is_orgb_mode = !is_orgb_mode;
+            }
+        #endif
+        return false;
+    }        
+
+    return true;
+}
