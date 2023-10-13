@@ -86,10 +86,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     return true;
 }
 
-bool rgb_matrix_indicators_kb(void) {
-    if (!rgb_matrix_indicators_user()) {
-        return false;
-    }
-    rgb_matrix_set_color(45, 193, 255, 193);
-    return true;
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    RGB_MATRIX_INDICATOR_SET_COLOR(45, 193, 255, 193);
+    return false;
 }
