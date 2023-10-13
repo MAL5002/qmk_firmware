@@ -87,6 +87,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 }
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    RGB_MATRIX_INDICATOR_SET_COLOR(45, 193, 255, 193);
+    if (host_keyboard_led_state().caps_lock) {
+        rgb_matrix_set_color(45, 193, 255, 193);
+    }
     return false;
 }
