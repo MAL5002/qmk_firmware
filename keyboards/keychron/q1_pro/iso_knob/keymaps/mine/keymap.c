@@ -87,7 +87,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 }
 
 void rgb_matrix_indicators_user(void) {
-    if (IS_LED_HOST_ON(USB_LED_CAPS_LOCK)) {
-        rgb_matrix_set_color( 45, r, g, b);
+    if (IS_LED_ON(USB_LED_CAPS_LOCK)) {
+        rgb_matrix_set_color( 45, 0, 0, 0);
     }
 }
