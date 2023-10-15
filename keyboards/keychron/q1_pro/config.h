@@ -73,4 +73,4 @@
 #define FN_KEY2 MO(3)
 #define BL_TEST_KEY2 KC_END
 
-#define INVERT_OS_SWITCH_STATE
+//#define INVERT_OS_SWITCH_STATE
