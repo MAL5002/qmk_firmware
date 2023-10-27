@@ -222,8 +222,8 @@ void openrgb_get_device_info(void) {
     raw_hid_buffer[1] = RGB_MATRIX_LED_COUNT;
     raw_hid_buffer[2] = MATRIX_COLS * MATRIX_ROWS;
 
-#define MASSDROP_VID 0x04D8
-#if VENDOR_ID == MASSDROP_VID
+#define NO_STR_VID 0x04D8, 0x3434
+#if VENDOR_ID == NO_STR_VID
 #    define PRODUCT_STRING PRODUCT
 #    define MANUFACTURER_STRING MANUFACTURER
 #else
