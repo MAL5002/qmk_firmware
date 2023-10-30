@@ -43,14 +43,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_FN1] = LAYOUT_70_iso(
         KC_GRV,  KC_BRID,  KC_BRIU,  KC_MCTL, KC_LPAD, RGB_VAD, RGB_VAI,     KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,           RGB_TOG,
         _______, BT_HST1,  BT_HST2,  BT_HST3, _______, _______, _______,     _______,  _______, _______, _______,  _______,  _______,                     _______,
-        RGB_TOG, RGB_MOD,  RGB_VAI,  RGB_HUI, RGB_SAI, RGB_SPI,              _______,  _______, _______, _______,  _______,  _______,  _______, _______,  _______,
+        RGB_TOG, RGB_MOD,  RGB_VAI,  RGB_HUI, RGB_SAI, RGB_SPI,              _______,  _______, _______, SWITCH_MODE,  _______,  _______,  _______, _______,  _______,
         _______, _______,  RGB_RMOD, RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD,     _______,  NK_TOGG, _______, _______,  _______,  _______,  _______, _______,
         _______, _______,  _______,           _______,          _______,     _______,           _______,           _______,            _______, _______,  _______),
 
     [WIN_FN1] = LAYOUT_70_iso(
         KC_GRV,  KC_BRID,  KC_BRIU,  KC_TASK, KC_FILE, RGB_VAD, RGB_VAI,     KC_MPRV,  KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,           RGB_TOG,
         _______, BT_HST1,  BT_HST2,  BT_HST3, _______, _______, _______,     _______,  _______, _______, _______,  _______,  _______,                     _______,
-        RGB_TOG, RGB_MOD,  RGB_VAI,  RGB_HUI, RGB_SAI, RGB_SPI,              _______,  _______, _______, _______,  _______,  _______,  _______, _______,  _______,
+        RGB_TOG, RGB_MOD,  RGB_VAI,  RGB_HUI, RGB_SAI, RGB_SPI,              _______,  _______, _______, SWITCH_MODE,  _______,  _______,  _______, _______,  _______,
         _______, _______,  RGB_RMOD, RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD,     _______,  NK_TOGG, _______, _______,  _______,  _______,  _______, _______,
         _______, _______,  _______,           _______,          _______,     _______,           _______,           _______,            _______, _______,  _______),
 
@@ -71,3 +71,21 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [FN2]      = {ENCODER_CCW_CW(_______, _______)},
 };
 #endif // ENCODER_MAP_ENABLE
+
+extern uint8_t is_orgb_mode;
+
+// Toggle OpenRGB/Via Compatibility (Defualts to OpenRGB on power)
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
+{
+    switch (keycode) {
+        case SWITCH_MODE:
+        #ifdef OPENRGB_ENABLE
+            if (record->event.pressed) {
+                is_orgb_mode = !is_orgb_mode;
+            }
+        #endif
+        return false;
+    }
+
+    return true;
+}
