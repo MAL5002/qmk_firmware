@@ -67,6 +67,8 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
+extern uint8_t is_orgb_mode;
+
 // Toggle OpenRGB/Via Compatibility (Defualts to OpenRGB on power)
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
