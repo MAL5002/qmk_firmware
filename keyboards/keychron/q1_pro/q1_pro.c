@@ -139,7 +139,7 @@ static void encoder0_pad_cb(void *param) {
 #ifdef BLUETOOTH_ENABLE
 static void own_bt_param_init(void) {
     /* Set bluetooth device name */
-    ckbt51_set_local_name(STR(PRODUCT));
+    ckbt51_set_local_name(PRODUCT);
     wait_ms(10);
     module_param_t param = {.event_mode             = 0x02,
                             .connected_idle_timeout = 7200,
@@ -208,7 +208,7 @@ void matrix_scan_kb(void) {
 #ifdef KC_BLUETOOTH_ENABLE
 static void ckbt51_param_init(void) {
     /* Set bluetooth device name */
-    ckbt51_set_local_name(STR(PRODUCT));
+    ckbt51_set_local_name(PRODUCT);
     /* Set bluetooth parameters */
     module_param_t param = {.event_mode             = 0x02,
                             .connected_idle_timeout = 7200,
